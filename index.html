@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Istambul · Aniversário 2026 · Itinerário Completo</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f5f5f7;
+  color: #1a1a2e;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.container { max-width: 880px; margin: 0 auto; padding: 24px 16px; }
+
+/* HEADER */
+.header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: white; padding: 28px 32px; border-radius: 16px; margin-bottom: 16px;
+}
+.header h1 { font-size: 26px; font-weight: 700; letter-spacing: 0.3px; }
+.header .sub { font-size: 13px; opacity: 0.78; margin-top: 5px; }
+.badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.badge {
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px; padding: 4px 12px; font-size: 11.5px; color: white;
+}
+
+/* HOTEL SELECTOR */
+.hotel-sel {
+  display: flex; margin-bottom: 14px; border-radius: 12px;
+  overflow: hidden; border: 2px solid #ccc; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.hs-btn {
+  flex: 1; padding: 13px 18px; border: none; cursor: pointer;
+  font-size: 13px; font-weight: 600; transition: all 0.15s;
+  background: #f5f5f7; color: #555; text-align: left;
+}
+.hs-btn .hs-name { font-size: 14px; font-weight: 700; display: block; }
+.hs-btn .hs-meta { font-size: 11.5px; opacity: 0.75; margin-top: 2px; display: block; }
+.hs-btn.sel-c { background: #0055aa; color: #fff; }
+.hs-btn.sel-g { background: #6a2d8a; color: #fff; }
+.hs-divider { width: 2px; background: #ccc; }
+
+/* OPINION BANNER */
+.opinion {
+  border-radius: 12px; padding: 13px 16px; margin-bottom: 16px;
+  font-size: 13px; line-height: 1.55; border: 2px solid;
+}
+.op-c { background: #e8f2ff; border-color: #0055aa; color: #002870; }
+.op-g { background: #f3e8ff; border-color: #6a2d8a; color: #3a0a5a; }
+
+/* TABS */
+.tabs { display: flex; gap: 6px; margin-bottom: 18px; flex-wrap: wrap; }
+.tab {
+  padding: 8px 18px; border-radius: 10px; border: 1.5px solid #ccc;
+  background: #fff; color: #555; cursor: pointer; font-size: 12.5px; font-weight: 500;
+  transition: all 0.15s;
+}
+.tab:hover { border-color: #0f3460; color: #0f3460; }
+.tab.active { background: #0f3460; color: white; border-color: #0f3460; }
+
+/* PANELS */
+.panel { display: none; }
+.panel.active { display: block; }
+
+/* HOTEL CARDS */
+.hotel-card {
+  background: #fff; border: 1.5px solid #e0e0e0; border-radius: 12px;
+  padding: 16px 18px; margin-bottom: 12px;
+  display: flex; gap: 14px; align-items: flex-start;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.hotel-card.rec-c { border-color: #0055aa; border-width: 2.5px; }
+.hotel-card.rec-g { border-color: #6a2d8a; border-width: 2.5px; }
+.hrank {
+  width: 34px; height: 34px; border-radius: 50%; background: #0f3460; color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 14px; flex-shrink: 0;
+}
+.hrank.blue { background: #0055aa; }
+.hrank.purple { background: #6a2d8a; }
+.hrank.green { background: #1a6030; }
+.hinfo { flex: 1; min-width: 0; }
+.hrec-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px; }
+.hrec-label.blue { color: #0044aa; }
+.hrec-label.purple { color: #5a1a8a; }
+.hrec-label.green { color: #1a6030; }
+.hname { font-weight: 700; font-size: 14.5px; }
+.hname a { color: #1a1a2e; text-decoration: none; }
+.hname a:hover { text-decoration: underline; color: #0f3460; }
+.harea { font-size: 12px; color: #777; margin-top: 2px; }
+.htags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; }
+.htag { font-size: 11px; padding: 3px 9px; border-radius: 12px; background: #f0f4ff; color: #0f3460; border: 1px solid #c5d5f5; }
+.htag.gold { background: #fffae8; color: #7a5000; border-color: #e8d080; }
+.htag.blue { background: #e4f0ff; color: #003090; border-color: #a0c0f0; }
+.htag.purple { background: #f3e8ff; color: #4a0a7a; border-color: #c090e0; }
+.htag.green { background: #e8f8ee; color: #1a6030; border-color: #90d0aa; }
+.hdesc { margin-top: 9px; font-size: 12.5px; color: #555; line-height: 1.5; }
+.hright { text-align: right; flex-shrink: 0; }
+.hprice { font-size: 20px; font-weight: 700; color: #0f3460; }
+.hpricelbl { font-size: 11px; color: #888; }
+.sbubble {
+  display: inline-block; border-radius: 7px 7px 7px 0;
+  padding: 3px 9px; font-size: 13px; font-weight: 700; color: white; margin-top: 6px;
+}
+.s96{background:#1a6a30}.s94{background:#2a7a3a}.s93{background:#3a8a45}.s92{background:#4a9a50}.s91{background:#5aaa5c}
+
+/* DAY HEADER */
+.day-header {
+  display: flex; align-items: center; gap: 12px; padding: 16px 20px; border-radius: 12px;
+  color: white; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.dnum { font-size: 32px; font-weight: 800; }
+.dinfo h2 { font-size: 17px; font-weight: 700; }
+.dinfo p { font-size: 12px; opacity: 0.82; margin-top: 2px; }
+.dicon { font-size: 30px; margin-left: auto; }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 38px; }
+.timeline::before { content: ''; position: absolute; left: 12px; top: 8px; bottom: 8px; width: 2px; background: #e0e0e0; }
+.tl-item { position: relative; margin-bottom: 18px; }
+.tl-dot {
+  position: absolute; left: -30px; top: 3px; width: 20px; height: 20px; border-radius: 50%;
+  background: var(--dotc, #0f3460); color: white; font-size: 9px;
+  display: flex; align-items: center; justify-content: center; font-weight: 700; z-index: 1;
+}
+.tl-time { font-size: 11px; font-weight: 700; color: #888; margin-bottom: 2px; }
+.tl-title { font-weight: 600; font-size: 14px; color: #1a1a2e; }
+.tl-desc { font-size: 12.5px; color: #555; margin-top: 3px; line-height: 1.5; }
+
+/* DUAL TRANSPORT */
+.trans-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 9px; }
+.trans-box { border-radius: 10px; padding: 10px 13px; border: 1.5px solid; }
+.trans-c { background: #eaf3ff; border-color: #88bbff; }
+.trans-g { background: #f5eaff; border-color: #cc88ff; }
+.tb-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 7px; display: flex; align-items: center; gap: 4px; }
+.trans-c .tb-label { color: #0044aa; }
+.trans-g .tb-label { color: #5a1a8a; }
+.transport-step { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 5px; font-size: 12.5px; }
+.transport-step:last-child { margin-bottom: 0; }
+.t-icon { font-size: 14px; flex-shrink: 0; }
+.trans-c .t-text { color: #1a3070; line-height: 1.45; }
+.trans-g .t-text { color: #3a0a60; line-height: 1.45; }
+.trans-c .t-text strong { color: #0044aa; }
+.trans-g .t-text strong { color: #5a1a8a; }
+
+/* SINGLE (shared) TRANSPORT */
+.transport-box { margin-top: 9px; background: #f0f5ff; border: 1.5px solid #b0ccff; border-radius: 10px; padding: 10px 13px; }
+.transport-box .tl-label { font-size: 10.5px; font-weight: 700; color: #3060a0; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px; }
+.transport-box .transport-step { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 5px; font-size: 12.5px; }
+.transport-box .transport-step:last-child { margin-bottom: 0; }
+.transport-box .t-text { color: #2a3a6a; line-height: 1.45; }
+.transport-box .t-text strong { color: #0f3460; }
+
+.fare { background: #0f3460; color: white; font-size: 10px; font-weight: 700; border-radius: 4px; padding: 1px 5px; margin-left: 3px; vertical-align: middle; }
+.fare-g { background: #5a1a8a; }
+.badge-win { display: inline-block; background: #1a7a30; color: white; font-size: 10px; font-weight: 700; border-radius: 10px; padding: 1px 8px; margin-left: 6px; vertical-align: middle; }
+.badge-ok { display: inline-block; background: #7a7a7a; color: white; font-size: 10px; font-weight: 700; border-radius: 10px; padding: 1px 8px; margin-left: 6px; vertical-align: middle; }
+
+/* BOXES */
+.rest-box { margin-top: 7px; background: #fff8ee; border-left: 3px solid #e8a020; padding: 8px 12px; border-radius: 0 8px 8px 0; }
+.rest-box .rn { font-weight: 700; font-size: 13px; color: #7a4000; }
+.rest-box .rd { font-size: 12px; color: #9a5500; line-height: 1.4; }
+.cruise-box { margin-top: 7px; background: linear-gradient(90deg, #e4f1ff, #f0faff); border-left: 3px solid #0077b6; padding: 9px 13px; border-radius: 0 8px 8px 0; }
+.cruise-box .cn { font-weight: 700; font-size: 13px; color: #004080; }
+.cruise-box .cd { font-size: 12px; color: #005090; line-height: 1.4; }
+.tip-box { margin-top: 7px; background: #f0fff6; border-left: 3px solid #2a9d5f; padding: 7px 12px; border-radius: 0 8px 8px 0; font-size: 12.5px; color: #1a5030; line-height: 1.5; }
+.alert-box { margin-top: 7px; background: #fff0f0; border-left: 3px solid #cc3344; padding: 7px 12px; border-radius: 0 8px 8px 0; font-size: 12.5px; color: #7a1a22; line-height: 1.5; }
+.info-box { background: #f8f0ff; border-left: 3px solid #5a2d7a; padding: 8px 12px; border-radius: 0 8px 8px 0; font-size: 12.5px; color: #3a1a4a; line-height: 1.5; margin-bottom: 14px; }
+.divider { display: flex; align-items: center; gap: 10px; margin: 18px 0 12px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #aaa; }
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: #e0e0e0; }
+.note-box { background: #fff; border: 1.5px solid #e0e0e0; border-radius: 10px; padding: 12px 16px; margin-top: 16px; font-size: 12.5px; color: #555; line-height: 1.5; }
+
+/* COLORS */
+.d1{background:linear-gradient(135deg,#2d4a7a,#1a2f55)}
+.d2{background:linear-gradient(135deg,#7a2d2d,#5a1a1a)}
+.d3{background:linear-gradient(135deg,#2d7a4a,#1a5530)}
+.d4{background:linear-gradient(135deg,#7a5a2d,#5a3a1a)}
+.d5{background:linear-gradient(135deg,#5a2d7a,#3a1a55)}
+
+/* SHOW/HIDE BY HOTEL SELECTION */
+body.hotel-c .only-g { display: none !important; }
+body.hotel-g .only-c { display: none !important; }
+body.hotel-c .trans-row { grid-template-columns: 1fr; }
+body.hotel-c .trans-row .trans-g { display: none; }
+body.hotel-g .trans-row { grid-template-columns: 1fr; }
+body.hotel-g .trans-row .trans-c { display: none; }
+
+/* PRINT */
+@media print {
+  body { background: white; }
+  .tabs, .hotel-sel, .opinion { display: none; }
+  .panel { display: block !important; page-break-inside: avoid; margin-bottom: 32px; }
+  .day-header { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .hotel-card { break-inside: avoid; }
+  body.hotel-c .only-g, body.hotel-g .only-c { display: none !important; }
+  body.hotel-c .trans-row, body.hotel-g .trans-row { grid-template-columns: 1fr; }
+  body.hotel-c .trans-row .trans-g, body.hotel-g .trans-row .trans-c { display: none; }
+}
+
+@media (max-width: 600px) {
+  .trans-row { grid-template-columns: 1fr !important; }
+  .hotel-card { flex-wrap: wrap; }
+  .hright { text-align: left; }
+  .header { padding: 20px; }
+  .header h1 { font-size: 20px; }
+  .hotel-sel { flex-direction: column; }
+  .hs-divider { width: 100%; height: 2px; }
+}
+</style>
+</head>
+<body class="hotel-c">
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>&#x1F1F9;&#x1F1F7; Istambul &middot; Aniversário de Casamento 2026</h1>
+    <div class="sub">3 Out (chegada SAW, noite) &rarr; 7 Out 16:10 voo IST &rarr; Capadócia &middot; 2 adultos &middot; turismo a pé</div>
+    <div class="badge-row">
+      <span class="badge">3.5 dias de turismo</span>
+      <span class="badge">Hotéis 5&#9733; score &ge; 9.1</span>
+      <span class="badge">Cruzeiro Bósforo &mdash; 2&ordf; feira</span>
+      <span class="badge">Transportes Conrad vs Gleam</span>
+    </div>
+  </div>
+
+  <!-- HOTEL SELECTOR -->
+  <div class="hotel-sel">
+    <button class="hs-btn sel-c" id="btn-c" onclick="selectHotel('c')">
+      <span class="hs-name">&#x1F535; Conrad Istanbul Bosphorus</span>
+      <span class="hs-meta">Beshiktas &middot; Bósforo &middot; 9.6&#9733; &middot; &euro;235/noite &mdash; RECOMENDADO &#11088;</span>
+    </button>
+    <div class="hs-divider"></div>
+    <button class="hs-btn" id="btn-g" onclick="selectHotel('g')">
+      <span class="hs-name">&#x1F7E3; Gleam Collection Hotel</span>
+      <span class="hs-meta">Nisantasi &middot; Metro M2 &middot; 9.2&#9733; &middot; &euro;203/noite</span>
+    </button>
+  </div>
+
+  <!-- OPINION -->
+  <div class="opinion op-c" id="op-c">
+    <strong>&#x1F535; Conrad &mdash; A melhor escolha para este itinerário:</strong> Acordar com o Bósforo à janela numa viagem de aniversário é uma experiência única. O Dia 4 é quase inteiramente a pé (Dolmabahçe a 15 min, ferry Beşiktaş a 20 min). O cruzeiro embarca no Kabataş &mdash; a 20 min de caminhada pela orla. Score 9.6 genuíno. A diferença de &euro;32/noite numa viagem especial justifica-se. <strong>Desvantagem:</strong> Sem metro M2 direto &mdash; para Grand Bazaar e IST exige mais ligações.
+  </div>
+  <div class="opinion op-g" id="op-g" style="display:none">
+    <strong>&#x1F7E3; Gleam &mdash; Por que escolhê-lo:</strong> Metro M2 (Osmanbey) a 5 min a pé: Grand Bazaar são 15 min direto, IST airport são 50 min limpos (M2&rarr;M11 Havaist). İstiklal a 10 min a pé. Nişantaşı tem excelentes restaurantes. <strong>Desvantagem:</strong> Sem a magia do Bósforo à janela. Para Dolmabahçe são ~25 min vs 15 min a pé do Conrad.
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab" onclick="show('hotels', this)">&#x1F3E8; Hotéis</button>
+    <button class="tab active" style="background:#2d4a7a;color:white;border-color:#2d4a7a" onclick="show('d1', this)">Dia 1 &middot; Chegada</button>
+    <button class="tab" style="background:#7a2d2d;color:white;border-color:#7a2d2d" onclick="show('d2', this)">Dia 2 &middot; Dom 4 Out</button>
+    <button class="tab" style="background:#2d7a4a;color:white;border-color:#2d7a4a" onclick="show('d3', this)">Dia 3 &middot; Seg 5 Out</button>
+    <button class="tab" style="background:#7a5a2d;color:white;border-color:#7a5a2d" onclick="show('d4', this)">Dia 4 &middot; Ter 6 Out</button>
+    <button class="tab" style="background:#5a2d7a;color:white;border-color:#5a2d7a" onclick="show('d5', this)">Dia 5 &middot; Qua 7 Out</button>
+  </div>
+
+  <!-- ===== HOTÉIS ===== -->
+  <div class="panel" id="panel-hotels">
+    <div class="divider">Hotéis 5&#9733; com score &gt; 9.0 no Booking &middot; dentro de &euro;250/noite &middot; 3&ndash;7 Outubro 2026</div>
+    <div class="info-box">
+      <strong>Candidatos finais:</strong> Conrad Istanbul Bosphorus (9.6, Beşiktaş) e Gleam Collection Hotel (9.2, Nişantaşı). Selecciona o hotel no topo da página para ver os transportes específicos em cada dia do roteiro.
+    </div>
+
+    <!-- Conrad -->
+    <div class="hotel-card rec-c">
+      <div class="hrank blue">&#9733;</div>
+      <div class="hinfo">
+        <div class="hrec-label blue">&#11088; RECOMENDADO &middot; Score máximo &middot; Bósforo &middot; Dia 4 quase a pé</div>
+        <div class="hname"><a href="https://www.booking.com/hotel/tr/conrad-istanbul.html?aid=8132308&checkin=2026-10-03&checkout=2026-10-07&no_rooms=1&group_adults=2&selected_currency=EUR" target="_blank">Conrad Istanbul Bosphorus &#8599;</a></div>
+        <div class="harea">&#128205; Saray Caddesi No:5 &middot; Beşiktaş &middot; margem europeia do Bósforo</div>
+        <div class="htags">
+          <span class="htag blue">9.6 &middot; Score máximo</span>
+          <span class="htag">Hilton Luxury Collection</span>
+          <span class="htag blue">Vista Bósforo direta</span>
+          <span class="htag">Piscina exterior + interior</span>
+          <span class="htag">Spa &middot; Hamam turco</span>
+          <span class="htag blue">Dolmabahçe a 15 min a pé</span>
+          <span class="htag blue">Ferry Beşiktaş (Üsküdar) a 20 min</span>
+        </div>
+        <div class="hdesc">O hotel mais bem avaliado da lista. Na margem europeia do Bósforo em Beşiktaş &mdash; acordar com o Bósforo à janela é a experiência central desta escolha. A 15 min a pé do Palácio Dolmabahçe. Kabataş (Tram T1) a 20 min de caminhada pela orla ou 8 min de bus. Score 9.6 verificado.</div>
+      </div>
+      <div class="hright">
+        <div class="hprice">&euro;235<span style="font-size:12px;font-weight:400">/noite</span></div>
+        <div class="hpricelbl">&euro;943 total &middot; 4 noites</div>
+        <span class="sbubble s96">9.6 &#9733;</span>
+      </div>
+    </div>
+
+    <!-- Gleam -->
+    <div class="hotel-card rec-g">
+      <div class="hrank purple">&#9733;</div>
+      <div class="hinfo">
+        <div class="hrec-label purple">FINALISTA &middot; Metro M2 à porta &middot; IST airport direto &middot; İstiklal a pé</div>
+        <div class="hname"><a href="https://www.booking.com/hotel/tr/gleam-collection.html?aid=8132308&checkin=2026-10-03&checkout=2026-10-07&no_rooms=1&group_adults=2&selected_currency=EUR" target="_blank">Gleam Collection Hotel &#8599;</a></div>
+        <div class="harea">&#128205; Dershane Sokağı 16 &middot; Nişantaşı &middot; Şişli</div>
+        <div class="htags">
+          <span class="htag purple">9.2 score</span>
+          <span class="htag purple">Metro M2 Osmanbey a 5 min</span>
+          <span class="htag purple">İstiklal a 10 min a pé</span>
+          <span class="htag">Bairro premium Nişantaşı</span>
+          <span class="htag">Banheira exterior &middot; Spa &middot; Jacuzzi</span>
+          <span class="htag purple">IST: M2&rarr;M11 Havaist direto</span>
+        </div>
+        <div class="hdesc">No elegante bairro de Nişantaşı. Metro M2 em Osmanbey a 5 min a pé: Grand Bazaar são 15 min direto (Vezneciler), IST airport são 50 min limpos. İstiklal Caddesi a 10 min a pé. Sem a vista do Bósforo mas bairro cosmopolita e restaurantes premium.</div>
+      </div>
+      <div class="hright">
+        <div class="hprice">&euro;203<span style="font-size:12px;font-weight:400">/noite</span></div>
+        <div class="hpricelbl">&euro;814 total &middot; 4 noites</div>
+        <span class="sbubble s92">9.2 &#9733;</span>
+      </div>
+    </div>
+
+    <!-- Bentley Old City -->
+    <div class="hotel-card">
+      <div class="hrank green">3</div>
+      <div class="hinfo">
+        <div class="hrec-label green">Sultanahmet a pé &middot; Melhor custo-benefício da lista</div>
+        <div class="hname"><a href="https://www.booking.com/hotel/tr/bentley-old-city-special-class.html?aid=8132308&checkin=2026-10-03&checkout=2026-10-07&no_rooms=1&group_adults=2&selected_currency=EUR" target="_blank">Bentley Hotel Old City &middot; Special Class &#8599;</a></div>
+        <div class="harea">&#128205; Bab-ı Ali Caddesi No:2 &middot; Cağaloğlu &middot; Fatih (Old City)</div>
+        <div class="htags">
+          <span class="htag gold">9.4 score</span>
+          <span class="htag green">Hagia Sophia a 7 min a pé</span>
+          <span class="htag green">Topkapi a 12 min a pé</span>
+          <span class="htag green">Cisterna a 5 min a pé</span>
+          <span class="htag">Spa + Hamam &middot; Terraço panorâmico</span>
+          <span class="htag">Tram T1 (Sirkeci) a 3 min</span>
+        </div>
+        <div class="hdesc">Localização excecional para o Dia 2 &mdash; tudo a pé. Tram T1 em Sirkeci (3 min) liga ao Grand Bazaar, Galata, Kabataş. Score 9.4 com 3.341 avaliações. Melhor preço relativo ao score de toda a lista.</div>
+      </div>
+      <div class="hright">
+        <div class="hprice">&euro;157<span style="font-size:12px;font-weight:400">/noite</span></div>
+        <div class="hpricelbl">&euro;632 total &middot; 4 noites</div>
+        <span class="sbubble s94">9.4 &#9733;</span>
+      </div>
+    </div>
+
+    <!-- Lionel -->
+    <div class="hotel-card">
+      <div class="hrank">4</div>
+      <div class="hinfo">
+        <div class="hname"><a href="https://www.booking.com/hotel/tr/lionel-istanbul.html?aid=8132308&checkin=2026-10-03&checkout=2026-10-07&no_rooms=1&group_adults=2&selected_currency=EUR" target="_blank">Lionel Hotel Istanbul &#8599;</a></div>
+        <div class="harea">&#128205; Abdi İpekçi Cd. No.84 &middot; Bayrampaşa</div>
+        <div class="htags">
+          <span class="htag gold">9.3 score</span>
+          <span class="htag">Melhor preço da lista</span>
+          <span class="htag">Piscina interior + Spa &middot; Hamam &middot; Yoga</span>
+        </div>
+        <div class="hdesc">Score elevado e preço acessível. Em Bayrampaşa, a 3 paragens de metro (M1) do centro histórico. Mais adequado para quem prioriza as instalações à localização central.</div>
+      </div>
+      <div class="hright">
+        <div class="hprice">&euro;104<span style="font-size:12px;font-weight:400">/noite</span></div>
+        <div class="hpricelbl">&euro;420 total &middot; 4 noites</div>
+        <span class="sbubble s93">9.3 &#9733;</span>
+      </div>
+    </div>
+
+    <!-- Bentley Bosphorus -->
+    <div class="hotel-card">
+      <div class="hrank">5</div>
+      <div class="hinfo">
+        <div class="hname"><a href="https://www.booking.com/hotel/tr/bentley.html?aid=8132308&checkin=2026-10-03&checkout=2026-10-07&no_rooms=1&group_adults=2&selected_currency=EUR" target="_blank">Bentley Hotel Bosphorus &middot; Special Class &#8599;</a></div>
+        <div class="harea">&#128205; Halaskargazi Cad. No:23 &middot; Harbiye &middot; Nişantaşı</div>
+        <div class="htags">
+          <span class="htag gold">9.1 score</span>
+          <span class="htag">Harbiye (junto a Taksim)</span>
+          <span class="htag">Metro M2 (Osmanbey) a 7 min</span>
+          <span class="htag">Spa + Hamam &middot; Excursões a pé incluídas</span>
+        </div>
+        <div class="hdesc">Na zona de Harbiye, a 10 min a pé de Taksim. Metro M2 em Osmanbey. Marca Bentley com excelente reputação de serviço em Istambul.</div>
+      </div>
+      <div class="hright">
+        <div class="hprice">&euro;142<span style="font-size:12px;font-weight:400">/noite</span></div>
+        <div class="hpricelbl">&euro;568 total &middot; 4 noites</div>
+        <span class="sbubble s91">9.1 &#9733;</span>
+      </div>
+    </div>
+
+    <div class="note-box">
+      <strong>İstanbulkart:</strong> Comprar logo ao chegar ao SAW (nas máquinas de vending). Custo: ~&euro;3 (cartão) + recarga. Aceite em Tram T1, Metro M1/M2/M11, Ferry IDO e Funiculares. Preço por viagem: ~&euro;0.70 com cartão (vs ~&euro;1.40 sem). Essencial para toda a semana.
+    </div>
+  </div>
+
+  <!-- ===== DIA 1 — CHEGADA ===== -->
+  <div class="panel active" id="panel-d1">
+    <div class="day-header d1">
+      <div class="dnum">01</div>
+      <div class="dinfo"><h2>Sábado, 3 de Outubro &mdash; Chegada via SAW</h2><p>Aeroporto Sabiha Gökçen (lado asiático) &rarr; hotel &rarr; jantar leve</p></div>
+      <div class="dicon">&#9992;&#65039;</div>
+    </div>
+
+    <div class="timeline" style="--dotc:#2d4a7a">
+      <div class="tl-item">
+        <div class="tl-dot">&#9992;</div>
+        <div class="tl-time">Noite &mdash; Chegada</div>
+        <div class="tl-title">Aeroporto SAW (Sabiha Gökçen)</div>
+        <div class="tl-desc">SAW fica no lado asiático de Istambul. Antes de sair, comprar o <strong>İstanbulkart</strong> nas máquinas de vending &mdash; vai ser usado toda a semana.</div>
+        <div class="trans-row">
+          <div class="trans-box trans-c">
+            <div class="tb-label">&#x1F535; Conrad &middot; Beşiktaş</div>
+            <div class="transport-step"><span class="t-icon">&#x1F695;</span><span class="t-text"><strong>Taxi/Uber (recomendado):</strong> SAW &rarr; Beşiktaş ~70-90 min, ~&euro;30-40. BiTaksi ou fila oficial.</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F68C;</span><span class="t-text"><strong>Alt. poupança:</strong> Havabus E11 &rarr; Kadıköy (~30 min) <span class="fare">&euro;3</span> + Ferry Kadıköy &rarr; Beşiktaş (~20 min) <span class="fare">&euro;0.70</span> + 5 min a pé. Total ~1h.</span></div>
+          </div>
+          <div class="trans-box trans-g">
+            <div class="tb-label">&#x1F7E3; Gleam &middot; Nişantaşı</div>
+            <div class="transport-step"><span class="t-icon">&#x1F695;</span><span class="t-text"><strong>Taxi/Uber (recomendado):</strong> SAW &rarr; Nişantaşı ~60-75 min, ~&euro;28-38.</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F68C;</span><span class="t-text"><strong>Alt. poupança:</strong> E11 &rarr; Kadıköy + Metro M4 &rarr; Marmaray &rarr; M2 &rarr; Osmanbey. Total ~1h30 com malas à noite &mdash; não vale a pena.</span></div>
+          </div>
+        </div>
+        <div class="tip-box">&#x1F4A1; Primeira noite com malas: taxi sempre. Apps úteis: Uber e <strong>BiTaksi</strong> (taxi oficial turco). Comprar İstanbulkart nas máquinas antes de sair do aeroporto.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F3E8;</div>
+        <div class="tl-time">22h&ndash;23h (estimado)</div>
+        <div class="tl-title">Check-in + preparação</div>
+        <div class="tl-desc">Guardar malas, refrescar. Instalar <strong>Google Maps offline (Istambul)</strong>. Reservar online slots para <strong>Hagia Sophia</strong> e <strong>Topkapi</strong> se ainda não feito.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F374;</div>
+        <div class="tl-time">Tarde da noite</div>
+        <div class="tl-title">Jantar leve perto do hotel</div>
+        <div class="rest-box only-c">
+          <div class="rn">Bebek Balık (Beşiktaş)</div>
+          <div class="rd">Peixe fresco, aberto até tarde &middot; mesmo na orla do Bósforo &middot; ~&euro;15/pp</div>
+        </div>
+        <div class="rest-box only-g">
+          <div class="rn">Kantin (Nişantaşı)</div>
+          <div class="rd">Cozinha turca moderna e elegante &middot; ~&euro;18/pp &middot; bom para primeira noite</div>
+        </div>
+        <div class="rest-box" style="margin-top:8px">
+          <div class="rn">Alternativa rápida: Karaköy Güllüoğlu</div>
+          <div class="rd">Baklava + börek + pide &middot; aberto até tarde &middot; leve e delicioso &middot; ~&euro;6-10 pp</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DIA 2 — SULTANAHMET ===== -->
+  <div class="panel" id="panel-d2">
+    <div class="day-header d2">
+      <div class="dnum">02</div>
+      <div class="dinfo"><h2>Domingo, 4 de Outubro &mdash; Sultanahmet Histórico</h2><p>Hagia Sophia &middot; Mesquita Azul &middot; Topkapi &middot; Cisterna Basílica &middot; Hippodrome</p></div>
+      <div class="dicon">&#x1F54C;</div>
+    </div>
+
+    <div class="timeline" style="--dotc:#7a2d2d">
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x2615;</div>
+        <div class="tl-time">10h00 &mdash; saída</div>
+        <div class="tl-title">Hotel &rarr; Sultanahmet</div>
+        <div class="trans-row">
+          <div class="trans-box trans-c">
+            <div class="tb-label">&#x1F535; Conrad &rarr; Sultanahmet <span class="badge-ok">~30 min</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F6B6;</span><span class="t-text">Walk pela orla do Bósforo até <strong>Kabataş</strong> (~20 min &mdash; linda de manhã)</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F68C;</span><span class="t-text">Ou Bus <strong>25E ou 40</strong> Conrad &rarr; Kabataş (~8 min) <span class="fare">&euro;0.70</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F68A;</span><span class="t-text">Tram T1 Kabataş &rarr; <strong>Sultanahmet</strong> (6 paragens, 18 min) <span class="fare">&euro;0.70</span></span></div>
+          </div>
+          <div class="trans-box trans-g">
+            <div class="tb-label">&#x1F7E3; Gleam &rarr; Sultanahmet <span class="badge-ok">~28 min</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F687;</span><span class="t-text">Walk 5 min &rarr; M2 <strong>Osmanbey</strong> &rarr; <strong>Taksim</strong> (1 paragem, 2 min) <span class="fare fare-g">&euro;0.70</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F687;</span><span class="t-text">Funicular F1 <strong>Taksim &rarr; Kabataş</strong> (2 min) <span class="fare fare-g">&euro;0.70</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F68A;</span><span class="t-text">Tram T1 Kabataş &rarr; <strong>Sultanahmet</strong> (6 paragens, 18 min) <span class="fare fare-g">&euro;0.70</span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider">Manhã &mdash; Área Histórica</div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F54C;</div>
+        <div class="tl-time">10h30 &ndash; 12h15</div>
+        <div class="tl-title">Hagia Sophia (Ayasofya)</div>
+        <div class="tl-desc">Uma das maravilhas do mundo &mdash; basílica cristã do séc. VI, depois mesquita otomana, hoje mesquita aberta a todos. Mosaicos dourados, abóbada extraordinária. <strong>Entrada gratuita</strong> &mdash; reservar slot online.</div>
+        <div class="alert-box">&#x26A0;&#xFE0F; Senhoras: lenço para cobrir o cabelo (disponível à entrada). Reserva online obrigatória em alta temporada.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F54C;</div>
+        <div class="tl-time">12h15 &ndash; 13h00</div>
+        <div class="tl-title">Mesquita Azul + Hippodrome</div>
+        <div class="tl-desc">6 minaretes únicos, 20.000 azulejos de Iznik, cúpula central imponente. <strong>Entrada gratuita.</strong> Hippodrome ao lado: Obelisco de Teodósio (324 d.C.), Coluna das Serpentes. Se fechar para orações, visitar o Hippodrome (~20 min) e regressar.</div>
+      </div>
+
+      <div class="divider">Almoço</div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F374;</div>
+        <div class="tl-time">13h00 &ndash; 14h00</div>
+        <div class="tl-title">Almoço em Sultanahmet</div>
+        <div class="rest-box">
+          <div class="rn">Matbah Restaurant &#9733;</div>
+          <div class="rd">Receitas do Palácio Otomano, ambiente histórico &middot; Arasta Bazaar, 2 min da Mesquita Azul &middot; ~&euro;15-20 pp &middot; Reserva recomendada</div>
+        </div>
+        <div class="rest-box" style="margin-top:8px">
+          <div class="rn">Dürümzade (alternativa descontraída)</div>
+          <div class="rd">O melhor dürüm (wrap de kebab) de Istambul &middot; rápido, barato, delicioso &middot; ~&euro;6-8 pp</div>
+        </div>
+      </div>
+
+      <div class="divider">Tarde</div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F4A7;</div>
+        <div class="tl-time">14h00 &ndash; 15h00</div>
+        <div class="tl-title">Cisterna Basílica (Yerebatan Sarnıçı)</div>
+        <div class="tl-desc">Reservatório subterrâneo do séc. VI com 336 colunas iluminadas. Frescura e atmosfera única. Palco do James Bond "From Russia with Love". ~&euro;8/pp &mdash; reservar online.</div>
+        <div class="alert-box">&#x26A0;&#xFE0F; Reservar bilhetes online &mdash; filas enormes sem reserva.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F451;</div>
+        <div class="tl-time">15h15 &ndash; 17h30</div>
+        <div class="tl-title">Palácio de Topkapi</div>
+        <div class="tl-desc">Centro do Império Otomano durante 400 anos. Tesouro Imperial, Relíquias Sagradas, Harem (bilhete separado ~&euro;12, muito recomendado), terraços com vista panorâmica do Bósforo. Entrada ~&euro;15/pp.</div>
+        <div class="alert-box">&#x26A0;&#xFE0F; Topkapi <strong>fecha Terças</strong> &mdash; hoje Domingo é perfeito. Entrada final às 17h. Grand Bazaar fecha Domingos &mdash; fica para amanhã. Tudo encaixado!</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F305;</div>
+        <div class="tl-time">18h00</div>
+        <div class="tl-title">Ponta de Seraglio (Sarayburnu)</div>
+        <div class="tl-desc">Walk até à ponta do promontório &mdash; pôr do sol com o Bósforo, o Corno de Ouro e os minaretes em simultâneo. O panorama mais fotogénico de Istambul.</div>
+      </div>
+
+      <div class="divider">Jantar</div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F377;</div>
+        <div class="tl-time">20h00</div>
+        <div class="tl-title">Jantar em Karaköy</div>
+        <div class="transport-box">
+          <div class="tl-label">&#x1F68A; Sultanahmet &rarr; Karaköy (igual para ambos)</div>
+          <div class="transport-step"><span class="t-icon">&#x1F68A;</span><span class="t-text t-text">Tram T1 Sultanahmet &rarr; <strong>Karaköy</strong> (1 paragem, 3 min) <span class="fare">&euro;0.70</span></span></div>
+          <div class="transport-step"><span class="t-icon">&#x1F6B6;</span><span class="t-text t-text">Ou walk pela <strong>Galata Bridge</strong> desde Eminönü ao anoitecer &mdash; lindíssimo (~20 min)</span></div>
+        </div>
+        <div class="trans-row" style="margin-top:8px">
+          <div class="trans-box trans-c">
+            <div class="tb-label">&#x1F535; Regresso ao Conrad</div>
+            <div class="transport-step"><span class="t-icon">&#x1F68A;</span><span class="t-text">T1 Karaköy &rarr; Kabataş + walk/bus a Beşiktaş. Total ~35 min.</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F695;</span><span class="t-text">Ou taxi Karaköy &rarr; Conrad (~&euro;10-12).</span></div>
+          </div>
+          <div class="trans-box trans-g">
+            <div class="tb-label">&#x1F7E3; Regresso ao Gleam</div>
+            <div class="transport-step"><span class="t-icon">&#x1F687;</span><span class="t-text">Tünel F2 Karaköy &rarr; Beyoğlu + walk 15 min a Nişantaşı.</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F695;</span><span class="t-text">Ou taxi Karaköy &rarr; Gleam (~&euro;8-10).</span></div>
+          </div>
+        </div>
+        <div class="rest-box" style="margin-top:8px">
+          <div class="rn">Karaköy Lokantası</div>
+          <div class="rd">Mezes turcos modernos, ambiente animado &middot; Reserva obrigatória &middot; ~&euro;25-35 pp</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== DIA 3 — BAZARES + CRUZEIRO ===== -->
+  <div class="panel" id="panel-d3">
+    <div class="day-header d3">
+      <div class="dnum">03</div>
+      <div class="dinfo"><h2>Segunda, 5 de Outubro &mdash; Bazares + Cruzeiro &#x26F5;</h2><p>Grand Bazaar &middot; Spice Bazaar &middot; Torre de Gálata &middot; İstiklal &middot; Jantar Cruzeiro Bósforo</p></div>
+      <div class="dicon">&#x26F5;</div>
+    </div>
+
+    <div class="timeline" style="--dotc:#2d7a4a">
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F6CD;</div>
+        <div class="tl-time">10h00 &ndash; 11h45</div>
+        <div class="tl-title">Grand Bazaar (Kapalıçarşı)</div>
+        <div class="tl-desc">4.000+ lojas. Aberto das 8h30. Negociar sempre &mdash; primeiro preço é geralmente 2-3&times; o justo. Fechado Domingos &mdash; hoje Segunda é o dia certo.</div>
+        <div class="trans-row">
+          <div class="trans-box trans-c">
+            <div class="tb-label">&#x1F535; Conrad &rarr; Grand Bazaar <span class="badge-ok">~35 min</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F68C;</span><span class="t-text">Walk/Bus &rarr; Kabataş <span class="fare">&euro;0.70</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F68A;</span><span class="t-text">Tram T1 &rarr; <strong>Beyazıt-Kapalıçarşı</strong> (8 paragens, 22 min) <span class="fare">&euro;0.70</span></span></div>
+          </div>
+          <div class="trans-box trans-g">
+            <div class="tb-label">&#x1F7E3; Gleam &rarr; Grand Bazaar <span class="badge-win">&#x2713; 18 min</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F687;</span><span class="t-text">Walk 5 min &rarr; M2 Osmanbey &rarr; <strong>Vezneciler</strong> (3 paragens, 6 min) <span class="fare fare-g">&euro;0.70</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F6B6;</span><span class="t-text">Walk 5 min à entrada principal do Grand Bazaar. Muito direto!</span></div>
+          </div>
+        </div>
+        <div class="tip-box">&#x1F4A1; O Gleam ganha aqui &mdash; M2 direto ao Grand Bazaar sem tram. Conrad chega ligeiramente mais tarde mas a walk matinal pela orla compensa.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F336;</div>
+        <div class="tl-time">11h45 &ndash; 12h45</div>
+        <div class="tl-title">Spice Bazaar (Mısır Çarşısı) + Eminönü</div>
+        <div class="transport-box">
+          <div class="tl-label">&#x1F68A; Grand Bazaar &rarr; Spice Bazaar (igual para ambos)</div>
+          <div class="transport-step"><span class="t-icon">&#x1F68A;</span><span class="t-text t-text">Tram T1 Beyazıt &rarr; <strong>Eminönü</strong> (2 paragens, 5 min) <span class="fare">&euro;0.70</span> &mdash; Spice Bazaar mesmo junto à paragem</span></div>
+          <div class="transport-step"><span class="t-icon">&#x1F6B6;</span><span class="t-text t-text">Ou a pé descendo do Grand Bazaar em direcção ao mar (~15 min)</span></div>
+        </div>
+        <div class="tl-desc" style="margin-top:8px">Ervas, especiarias, doces turcos, lokum, frutos secos. Comprar baklava e especiarias para levar!</div>
+      </div>
+
+      <div class="divider">Almoço</div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F41F;</div>
+        <div class="tl-time">12h45 &ndash; 13h30</div>
+        <div class="tl-title">Balık-Ekmek no Cais de Eminönü</div>
+        <div class="tl-desc">Sandwich de peixe grelhado nos barcos-restaurante do cais &mdash; experiência icónica de Istambul. ~&euro;4. Comer sentado na beira do Corno de Ouro.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F5FC;</div>
+        <div class="tl-time">14h00 &ndash; 15h00</div>
+        <div class="tl-title">Torre de Gálata</div>
+        <div class="transport-box">
+          <div class="tl-label">&#x1F68A; Eminönü &rarr; Torre de Gálata (igual para ambos)</div>
+          <div class="transport-step"><span class="t-icon">&#x1F68A;</span><span class="t-text t-text">Tram T1 Eminönü &rarr; <strong>Karaköy</strong> (1 paragem) <span class="fare">&euro;0.70</span> + walk 12 min subindo a colina de Galata</span></div>
+          <div class="transport-step"><span class="t-icon">&#x1F687;</span><span class="t-text t-text">Ou Tünel F2 Karaköy &rarr; Beyoğlu (2 min) <span class="fare">&euro;0.70</span> + 5 min a pé à torre</span></div>
+        </div>
+        <div class="alert-box">&#x26A0;&#xFE0F; Reservar bilhete online com antecedência &mdash; sem reserva, filas de 1-2 horas.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F683;</div>
+        <div class="tl-time">15h00 &ndash; 17h30</div>
+        <div class="tl-title">İstiklal Caddesi + Bonde Histórico + Cihangir</div>
+        <div class="trans-row">
+          <div class="trans-box trans-c">
+            <div class="tb-label">&#x1F535; Galata &rarr; İstiklal</div>
+            <div class="transport-step"><span class="t-icon">&#x1F687;</span><span class="t-text">Tünel F2 Galata &rarr; <strong>İstiklal/Beyoğlu</strong> (2 min) <span class="fare">&euro;0.70</span> &mdash; saída no início de İstiklal</span></div>
+          </div>
+          <div class="trans-box trans-g">
+            <div class="tb-label">&#x1F7E3; Galata &rarr; İstiklal <span class="badge-win">&#x2713; 10 min a pé!</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F687;</span><span class="t-text">Tünel F2 Galata &rarr; İstiklal (2 min) <span class="fare fare-g">&euro;0.70</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F6B6;</span><span class="t-text">Ou regresso direto ao Gleam: 10-12 min a pé desde İstiklal!</span></div>
+          </div>
+        </div>
+        <div class="tl-desc" style="margin-top:8px">İstiklal: 1.4 km de lojas, cafés, igrejas históricas, bares. Apanhar o bonde histórico vermelho. Desviar para o bairro boémio de Cihangir (vistas Bósforo).</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x2615;</div>
+        <div class="tl-time">17h30 &ndash; 18h45</div>
+        <div class="tl-title">Café em Cihangir com vista</div>
+        <div class="rest-box">
+          <div class="rn">Bariyer Kahve &middot; Cihangir</div>
+          <div class="rd">Vista para o Bósforo, café local de qualidade, esplanada &middot; ~&euro;5-8 pp</div>
+        </div>
+      </div>
+
+      <div class="divider">&#x2B50; Noite especial &mdash; Cruzeiro no Bósforo</div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x26F5;</div>
+        <div class="tl-time">19h30 &ndash; 22h30</div>
+        <div class="tl-title">JANTAR CRUZEIRO NO BÓSFORO</div>
+        <div class="trans-row">
+          <div class="trans-box trans-c">
+            <div class="tb-label">&#x1F535; Conrad &rarr; Embarque <span class="badge-win">&#x2713; Walk pela orla!</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F6B6;</span><span class="t-text"><strong>Kabataş:</strong> Walk 20 min pela orla Conrad &rarr; Kabataş &mdash; passeio romântico antes do cruzeiro!</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F68A;</span><span class="t-text"><strong>Eminönü:</strong> Bus/walk &rarr; Kabataş + T1 &rarr; Eminönü <span class="fare">&euro;0.70</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F3E8;</span><span class="t-text"><strong>Regresso:</strong> Walk ou Bus de Kabataş ao Conrad (~10 min).</span></div>
+          </div>
+          <div class="trans-box trans-g">
+            <div class="tb-label">&#x1F7E3; Gleam &rarr; Embarque <span class="badge-ok">~15 min</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F687;</span><span class="t-text">M2 Osmanbey &rarr; Taksim (1 paragem) + F1 &rarr; Kabataş (2 min) <span class="fare fare-g">&euro;1.40</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F695;</span><span class="t-text">Ou taxi de Cihangir &rarr; Kabataş (~&euro;6-8, mais cómodo)</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F3E8;</span><span class="t-text"><strong>Regresso:</strong> Taxi Kabataş &rarr; Gleam (~&euro;10-12).</span></div>
+          </div>
+        </div>
+        <div class="cruise-box" style="margin-top:10px">
+          <div class="cn">&#x1F6F3;&#xFE0F; Bosphorus Night Cruise with Dinner</div>
+          <div class="cd">~3 horas &middot; jantar buffet + show folclórico + música ao vivo &middot; ~&euro;50-80 pp &middot; <strong>Reservar no GetYourGuide ou Viator</strong> com 1-2 semanas de antecedência. Embarque habitual no Kabataş ou Eminönü.</div>
+        </div>
+        <div class="tip-box only-c">&#x1F4A1; Conrad + cruzeiro: a walk pela orla Conrad &rarr; Kabataş ao anoitecer já faz parte da experiência romântica. A noite começa antes de entrar no barco.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== DIA 4 — DOLMABAHÇE + ÜSKÜDAR ===== -->
+  <div class="panel" id="panel-d4">
+    <div class="day-header d4">
+      <div class="dnum">04</div>
+      <div class="dinfo"><h2>Terça, 6 de Outubro &mdash; Dolmabahçe, Beşiktaş &amp; Üsküdar</h2><p>Palácio Dolmabahçe &middot; Orla do Bósforo &middot; Ferry &middot; Lado asiático &middot; Jantar especial</p></div>
+      <div class="dicon">&#x1F3DB;&#xFE0F;</div>
+    </div>
+
+    <div class="tip-box only-c" style="margin-bottom:14px;border-radius:10px;border-left:none;border:2px solid #0055aa;background:#e8f2ff;color:#003080;padding:11px 15px">
+      &#x2B50; <strong>O melhor dia do roteiro se ficarem no Conrad.</strong> Dolmabahçe a 15 min a pé pela orla, Beşiktaş a mais 15 min, ferry à porta. Praticamente tudo a pé &mdash; Istambul na sua essência.
+    </div>
+
+    <div class="timeline" style="--dotc:#7a5a2d">
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F3DB;</div>
+        <div class="tl-time">10h00 &ndash; 12h30</div>
+        <div class="tl-title">Palácio de Dolmabahçe</div>
+        <div class="tl-desc">285 salas, chandelier de 4.5 toneladas, Harem imperial. Visita guiada obrigatória (incluída). ~&euro;15/pp + Harem ~&euro;12 (muito recomendado). Comprar bilhetes online.</div>
+        <div class="trans-row">
+          <div class="trans-box trans-c">
+            <div class="tb-label">&#x1F535; Conrad &rarr; Dolmabahçe <span class="badge-win">&#x2713; 15 min a pé!</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F6B6;</span><span class="t-text">Walk pela orla do Bósforo sentido sul ~15 min. <strong>Zero transportes, zero custo.</strong></span></div>
+          </div>
+          <div class="trans-box trans-g">
+            <div class="tb-label">&#x1F7E3; Gleam &rarr; Dolmabahçe <span class="badge-ok">~25 min</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F687;</span><span class="t-text">Walk 5 min &rarr; M2 Osmanbey &rarr; <strong>Taksim</strong> (1 paragem) <span class="fare fare-g">&euro;0.70</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F687;</span><span class="t-text">Funicular F1 Taksim &rarr; <strong>Kabataş</strong> (2 min) <span class="fare fare-g">&euro;0.70</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F6B6;</span><span class="t-text">Walk 8 min pela orla até ao palácio</span></div>
+          </div>
+        </div>
+        <div class="alert-box">&#x26A0;&#xFE0F; Dolmabahçe <strong>fecha Segundas e Quintas</strong>. Terça é perfeito. Topkapi fecha Terças &mdash; por isso foi visitado Domingo. Tudo encaixado!</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F30A;</div>
+        <div class="tl-time">12h30 &ndash; 13h15</div>
+        <div class="tl-title">Walk pela orla do Bósforo &rarr; Beşiktaş</div>
+        <div class="trans-row">
+          <div class="trans-box trans-c">
+            <div class="tb-label">&#x1F535; Dolmabahçe &rarr; Beşiktaş <span class="badge-win">&#x2713; 15 min a pé!</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F6B6;</span><span class="t-text">Continuar walk pela orla +15 min. <strong>Zero transportes.</strong> Passam junto ao Conrad!</span></div>
+          </div>
+          <div class="trans-box trans-g">
+            <div class="tb-label">&#x1F7E3; Gleam &rarr; Beşiktaş <span class="badge-ok">~25 min walk</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F6B6;</span><span class="t-text">Continuar walk orla Dolmabahçe &rarr; Beşiktaş (~25 min total)</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F68C;</span><span class="t-text">Ou Bus da Kabataş &rarr; Beşiktaş (~10 min) <span class="fare fare-g">&euro;0.70</span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider">Almoço</div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F374;</div>
+        <div class="tl-time">13h15 &ndash; 14h15</div>
+        <div class="tl-title">Almoço em Beşiktaş</div>
+        <div class="rest-box">
+          <div class="rn">Çırağan Balık</div>
+          <div class="rd">Peixe fresco na orla do Bósforo &middot; Beşiktaş &middot; ~&euro;18-25 pp</div>
+        </div>
+        <div class="rest-box" style="margin-top:8px">
+          <div class="rn">Midye dolma (street food obrigatório!)</div>
+          <div class="rd">Mexilhão recheado com arroz temperado &middot; venda ambulante em Beşiktaş &middot; ~&euro;2-3 &middot; um dos sabores de Istambul</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x26F4;</div>
+        <div class="tl-time">15h00 &ndash; 17h00</div>
+        <div class="tl-title">Ferry Beşiktaş &rarr; Üsküdar (lado asiático)</div>
+        <div class="transport-box">
+          <div class="tl-label">&#x26F4; Beşiktaş &rarr; Üsküdar &rarr; Eminönü (igual para ambos)</div>
+          <div class="transport-step"><span class="t-icon">&#x1F6B6;</span><span class="t-text t-text">Do almoço: walk 5-10 min ao cais de Beşiktaş</span></div>
+          <div class="transport-step"><span class="t-icon">&#x26F4;</span><span class="t-text t-text">Ferry IDO Beşiktaş &rarr; <strong>Üsküdar</strong> (15 min) <span class="fare">&euro;0.70</span> &middot; vista da skyline europeia</span></div>
+          <div class="transport-step"><span class="t-icon">&#x1F6B6;</span><span class="t-text t-text">Walk Üsküdar: Kız Kulesi (Torre da Donzela), Mesquita Mihrimah Sultan, mercado local</span></div>
+          <div class="transport-step"><span class="t-icon">&#x26F4;</span><span class="t-text t-text">Ferry Üsküdar &rarr; <strong>Eminönü</strong> (20 min) <span class="fare">&euro;0.70</span> &middot; pôr do sol sobre as mesquitas europeias</span></div>
+        </div>
+        <div class="tip-box">&#x1F4A1; Üsküdar ao pôr do sol com a skyline europeia ao fundo &mdash; o momento mais fotogénico de toda a viagem!</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F3E8;</div>
+        <div class="tl-time">18h00 &mdash; regresso</div>
+        <div class="tl-title">Eminönü &rarr; Hotel</div>
+        <div class="trans-row">
+          <div class="trans-box trans-c">
+            <div class="tb-label">&#x1F535; Eminönü &rarr; Conrad</div>
+            <div class="transport-step"><span class="t-icon">&#x1F68A;</span><span class="t-text">Tram T1 &rarr; <strong>Kabataş</strong> (5 paragens, 14 min) <span class="fare">&euro;0.70</span> + bus/walk a Beşiktaş</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F695;</span><span class="t-text">Ou taxi Eminönü &rarr; Conrad (~&euro;10-12)</span></div>
+          </div>
+          <div class="trans-box trans-g">
+            <div class="tb-label">&#x1F7E3; Eminönü &rarr; Gleam</div>
+            <div class="transport-step"><span class="t-icon">&#x1F68A;</span><span class="t-text">T1 &rarr; Karaköy + Tünel F2 &rarr; Beyoğlu + walk 15 min <span class="fare fare-g">&euro;1.40</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F695;</span><span class="t-text">Ou taxi Eminönü &rarr; Gleam (~&euro;10-14)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider">Jantar especial de aniversário</div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F377;</div>
+        <div class="tl-time">20h00</div>
+        <div class="tl-title">Jantar de aniversário &mdash; O melhor de Istambul</div>
+        <div class="rest-box">
+          <div class="rn">Mikla Restaurant &#9733;&#9733;&#9733;</div>
+          <div class="rd">Cozinha nórdico-turca contemporânea &middot; vista 360&deg; panorâmica &middot; Marmara Pera, Beyoğlu &middot; ~&euro;40-55 pp &middot; <strong>Reserva obrigatória com semanas de antecedência</strong></div>
+        </div>
+        <div class="rest-box" style="margin-top:8px">
+          <div class="rn">Neolokal (alternativa premiada)</div>
+          <div class="rd">Nova cozinha turca de raiz local &middot; Karaköy &middot; ~&euro;30-40 pp &middot; Prémio San Pellegrino</div>
+        </div>
+        <div class="transport-box" style="margin-top:10px">
+          <div class="tl-label">Hotel &rarr; Beyoğlu (jantar)</div>
+          <div class="transport-step"><span class="t-icon only-c">&#x1F535;</span><span class="t-text t-text only-c">Conrad &rarr; Mikla: Bus/walk &rarr; Kabataş + T1 &rarr; Karaköy + Tünel F2 &rarr; Beyoğlu. Ou taxi direto (~&euro;15).</span></div>
+          <div class="transport-step"><span class="t-icon only-g">&#x1F7E3;</span><span class="t-text t-text only-g">Gleam &rarr; Mikla: Walk 12 min a Taksim + Bus/taxi &rarr; Beyoğlu. Ou taxi direto (~&euro;8).</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== DIA 5 — PARTIDA IST ===== -->
+  <div class="panel" id="panel-d5">
+    <div class="day-header d5">
+      <div class="dnum">05</div>
+      <div class="dinfo"><h2>Quarta, 7 de Outubro &mdash; Manhã livre &middot; Partida IST 16:10</h2><p>Últimas compras &middot; Almoço de despedida &middot; Transfer IST &rarr; Capadócia</p></div>
+      <div class="dicon">&#x1F304;</div>
+    </div>
+
+    <div class="timeline" style="--dotc:#5a2d7a">
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x2615;</div>
+        <div class="tl-time">09h30 &ndash; 11h00</div>
+        <div class="tl-title">Pequeno-almoço turco + últimas compras</div>
+        <div class="rest-box">
+          <div class="rn">Van Kahvaltı Evi</div>
+          <div class="rd">Considerado o melhor pequeno-almoço turco de Istambul &middot; queijos, azeitonas, börek, ovos &middot; ~&euro;12-15 pp &middot; Cihangir ou Karaköy</div>
+        </div>
+        <div class="tl-desc" style="margin-top:8px">Compras finais: baklava Güllüoğlu, especiarias, cerâmica Iznik, Turkish Delight Hacı Bekir (desde 1777).</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F374;</div>
+        <div class="tl-time">12h30 &ndash; 13h15</div>
+        <div class="tl-title">Almoço rápido de despedida</div>
+        <div class="rest-box">
+          <div class="rn">Hamdi Restaurant &middot; Eminönü</div>
+          <div class="rd">Kebabs com vista panorâmica para o Golden Horn &middot; desde 1971 &middot; ~&euro;12-18 pp &middot; clássico infalível</div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x1F695;</div>
+        <div class="tl-time">13h00 &mdash; saída</div>
+        <div class="tl-title">Transfer Hotel &rarr; IST Airport (voo 16:10)</div>
+        <div class="trans-row">
+          <div class="trans-box trans-c">
+            <div class="tb-label">&#x1F535; Conrad &rarr; IST <span class="badge-ok">~55-70 min</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F695;</span><span class="t-text"><strong>Taxi/Uber (recomendado):</strong> Beşiktaş &rarr; IST ~50-65 min, ~&euro;28-38. Com malas, a opção mais direta e confortável.</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F68C;</span><span class="t-text"><strong>Havabus desde Taksim:</strong> Bus 25E/40 &rarr; Taksim + Havaist Bus Taksim &rarr; IST (~70 min total) <span class="fare">~&euro;12</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F687;</span><span class="t-text"><strong>Metro (longo):</strong> Bus &rarr; Kabataş &rarr; T1 &rarr; Yenikapı &rarr; M2 &rarr; Gayrettepe &rarr; M11 &rarr; IST. ~80 min <span class="fare">&euro;2.10</span></span></div>
+          </div>
+          <div class="trans-box trans-g">
+            <div class="tb-label">&#x1F7E3; Gleam &rarr; IST <span class="badge-win">&#x2713; 50 min metro!</span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F687;</span><span class="t-text"><strong>Metro (recomendado!):</strong> Walk 5 min &rarr; M2 Osmanbey &rarr; <strong>Gayrettepe</strong> (4 paragens, 8 min) &rarr; M11 Havaist &rarr; IST (35 min). Total ~50 min <span class="fare fare-g">&euro;1.40</span></span></div>
+            <div class="transport-step"><span class="t-icon">&#x1F695;</span><span class="t-text"><strong>Taxi:</strong> Nişantaşı &rarr; IST ~45-55 min, ~&euro;25-35.</span></div>
+          </div>
+        </div>
+        <div class="tip-box only-g">&#x1F4A1; Gleam tem a melhor conexão IST: M2 &rarr; M11 Havaist, direto, sem mudar de plataforma. A vantagem mais clara do Gleam em todo o roteiro.</div>
+        <div class="tip-box only-c">&#x1F4A1; Conrad para IST: taxi é a solução mais cómoda (&euro;30-35). Numa viagem de aniversário, chegar relaxado faz sentido. Sair às 13h00 no máximo.</div>
+        <div class="alert-box">&#x26A0;&#xFE0F; <strong>Sair do hotel às 13h00 no máximo.</strong> Guardar malas na recepção desde de manhã. IST é grande &mdash; contar 20 min do check-in ao gate.</div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot">&#x2708;</div>
+        <div class="tl-time">16h10</div>
+        <div class="tl-title">Voo IST &rarr; Capadócia &#x1FAA8;&#x1F388;</div>
+        <div class="tl-desc">Göreme, Pasabağı, Derinkuyu, balonismo ao amanhecer &mdash; a segunda parte da aventura! Boa viagem e feliz aniversário!</div>
+      </div>
+
+    </div>
+
+    <div class="note-box">
+      <strong>Resumo transportes:</strong><br>
+      <span class="only-c">&#x1F535; <strong>Conrad (Beşiktaş)</strong> &mdash; Espinha dorsal: Kabataş (Tram T1) a 20 min de walk pela orla ou 8 min de bus. Dia 4 quase inteiramente a pé (Dolmabahçe + Beşiktaş + ferry). Cruzeiro: walk romântica pela orla ao anoitecer. IST: taxi (~&euro;30-35). A vantagem estratégica está na experiência do Bósforo quotidiana e no Dia 4.</span>
+      <span class="only-g">&#x1F7E3; <strong>Gleam (Nişantaşı)</strong> &mdash; Espinha dorsal: M2 Osmanbey a 5 min a pé. Para T1: M2 &rarr; Taksim (1 paragem) &rarr; F1 &rarr; Kabataş. Grand Bazaar: M2 &rarr; Vezneciler direto (18 min). IST: M2 &rarr; M11 Havaist (50 min, &euro;1.40). İstiklal: 10 min a pé. Vantagem clara nos transportes e no Dia 3 (Grand Bazaar) e Dia 5 (IST).</span>
+    </div>
+  </div>
+
+</div>
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+function selectHotel(h) {
+  document.body.className = 'hotel-' + h;
+  document.getElementById('btn-c').className = 'hs-btn' + (h === 'c' ? ' sel-c' : '');
+  document.getElementById('btn-g').className = 'hs-btn' + (h === 'g' ? ' sel-g' : '');
+  document.getElementById('op-c').style.display = h === 'c' ? 'block' : 'none';
+  document.getElementById('op-g').style.display = h === 'g' ? 'block' : 'none';
+}
+</script>
+</body>
+</html>
